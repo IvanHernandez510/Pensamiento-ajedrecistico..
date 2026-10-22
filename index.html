@@ -1,0 +1,3121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Pensamiento ajedrecístico: aprende cómo se juega al ajedrez, practica los movimientos de las piezas, descubre cómo evoluciona la forma de pensar según el nivel Elo y juega contra Stockfish.">
+
+    <title>Pensamiento Ajedrecístico</title>
+
+    <link rel="stylesheet" href="estilos.css">
+
+    <!-- Chess.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <header class="hero" id="inicio">
+
+        <nav class="navbar">
+
+            <div class="logo">
+                ♞ <span>Pensamiento</span> Ajedrecístico
+            </div>
+
+            <div class="nav-links">
+
+                <a href="#inicio">Inicio</a>
+
+                <a href="#aprendizaje">Aprender</a>
+
+                <a href="#niveles">Niveles</a>
+
+                <a href="#jugar">Jugar</a>
+
+                <a href="#comparacion">Pensamiento</a>
+
+                <a href="#autor">Autor</a>
+
+                <a href="#calificacion">Calificar</a>
+
+            </div>
+
+        </nav>
+
+
+        <div class="hero-content">
+
+            <div class="hero-text">
+
+                <p class="small-title">
+                    ♟ EL ARTE DE PENSAR
+                </p>
+
+                <h1>
+                    ¿Cómo piensa un
+                    <span>ajedrecista?</span>
+                </h1>
+
+                <p class="hero-description">
+
+                    El ajedrez no consiste solamente en mover piezas.
+                    A medida que aumenta el nivel Elo, también cambia
+                    la forma de analizar, calcular y comprender una posición.
+
+                </p>
+
+                <a href="#aprendizaje" class="main-button">
+                    Aprender a jugar ↓
+                </a>
+
+            </div>
+
+
+            <!-- TABLERO DECORATIVO -->
+
+            <div class="chess-container">
+
+                <div class="decorative-board">
+
+                    <!-- NEGRAS -->
+
+                    <div class="dark black-piece">♜</div>
+                    <div class="light black-piece">♞</div>
+                    <div class="dark black-piece">♝</div>
+                    <div class="light black-piece">♛</div>
+                    <div class="dark black-piece">♚</div>
+                    <div class="light black-piece">♝</div>
+                    <div class="dark black-piece">♞</div>
+                    <div class="light black-piece">♜</div>
+
+                    <div class="light black-piece">♟</div>
+                    <div class="dark black-piece">♟</div>
+                    <div class="light black-piece">♟</div>
+                    <div class="dark black-piece">♟</div>
+                    <div class="light black-piece">♟</div>
+                    <div class="dark black-piece">♟</div>
+                    <div class="light black-piece">♟</div>
+                    <div class="dark black-piece">♟</div>
+
+
+                    <!-- CENTRO -->
+
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+
+
+                    <!-- BLANCAS -->
+
+                    <div class="dark white-piece">♙</div>
+                    <div class="light white-piece">♙</div>
+                    <div class="dark white-piece">♙</div>
+                    <div class="light white-piece">♙</div>
+                    <div class="dark white-piece">♙</div>
+                    <div class="light white-piece">♙</div>
+                    <div class="dark white-piece">♙</div>
+                    <div class="light white-piece">♙</div>
+
+                    <div class="light white-piece">♖</div>
+                    <div class="dark white-piece">♘</div>
+                    <div class="light white-piece">♗</div>
+                    <div class="dark white-piece">♕</div>
+                    <div class="light white-piece">♔</div>
+                    <div class="dark white-piece">♗</div>
+                    <div class="light white-piece">♘</div>
+                    <div class="dark white-piece">♖</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         APRENDER AJEDREZ
+    ====================================================== -->
+
+    <section class="intro" id="aprendizaje">
+
+        <div class="section-title">
+
+            <p>APRENDE DESDE CERO</p>
+
+            <h2>
+                ¿Cómo se juega
+                <span>al ajedrez?</span>
+            </h2>
+
+        </div>
+
+        <p class="intro-text">
+
+            El objetivo del ajedrez es poner al rey enemigo en una
+            situación en la que no pueda escapar del ataque.
+            Esto se llama <strong>jaque mate</strong>.
+
+            Cada pieza tiene una manera diferente de moverse.
+            Selecciona una pieza en los tableros para practicar.
+
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         OBJETIVO DEL JUEGO
+    ====================================================== -->
+
+    <section class="comparison">
+
+        <div class="section-title">
+
+            <p>LO MÁS IMPORTANTE</p>
+
+            <h2>
+                El objetivo es dar
+                <span>jaque mate</span>
+            </h2>
+
+        </div>
+
+
+        <div class="comparison-grid">
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♔
+                </div>
+
+                <h3>Protege a tu rey</h3>
+
+                <p>
+                    El rey es la pieza más importante.
+                </p>
+
+                <ul>
+
+                    <li>No puedes dejarlo en jaque.</li>
+
+                    <li>El enroque puede ayudar a protegerlo.</li>
+
+                    <li>Debes prestar atención a las amenazas.</li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="comparison-box highlighted">
+
+                <div class="big-icon">
+                    ♚
+                </div>
+
+                <h3>Ataca al rey enemigo</h3>
+
+                <p>
+                    Busca posiciones donde el rey rival tenga pocas opciones.
+                </p>
+
+                <ul>
+
+                    <li>Busca jaques.</li>
+
+                    <li>Elimina defensores.</li>
+
+                    <li>Calcula las respuestas del rival.</li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♟
+                </div>
+
+                <h3>Piensa antes de mover</h3>
+
+                <p>
+                    Una buena jugada comienza con una buena pregunta.
+                </p>
+
+                <ul>
+
+                    <li>¿Qué amenaza mi rival?</li>
+
+                    <li>¿Qué piezas están atacadas?</li>
+
+                    <li>¿Cuál es mi mejor jugada?</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PIEZAS
+    ====================================================== -->
+
+    <section class="levels">
+
+        <div class="section-title">
+
+            <p>LAS PIEZAS</p>
+
+            <h2>
+                Aprende cómo se mueve
+                <span>cada pieza</span>
+            </h2>
+
+        </div>
+
+
+        <div class="cards">
+
+            <!-- PEÓN -->
+
+            <article class="card beginner">
+
+                <div class="card-top">
+
+                    <span class="elo">
+                        ♙ PEÓN
+                    </span>
+
+                    <span class="icon">
+                        ♟
+                    </span>
+
+                </div>
+
+                <h3>
+                    El peón
+                </h3>
+
+                <p class="question">
+                    “¿Hacia dónde puede avanzar?”
+                </p>
+
+                <p>
+                    El peón normalmente avanza una casilla hacia delante.
+                    Desde su posición inicial puede avanzar dos casillas.
+                    Para capturar, lo hace en diagonal.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Movimiento:
+                    </strong>
+
+                    <span>
+                        Avanza · Captura en diagonal · Puede coronar
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- CABALLO -->
+
+            <article class="card amateur">
+
+                <div class="card-top">
+
+                    <span class="elo">
+                        ♘ CABALLO
+                    </span>
+
+                    <span class="icon">
+                        ♞
+                    </span>
+
+                </div>
+
+                <h3>
+                    El caballo
+                </h3>
+
+                <p class="question">
+                    “¿Dónde está mi salto?”
+                </p>
+
+                <p>
+                    El caballo se mueve formando una L:
+                    dos casillas en una dirección y una en otra.
+                    Es la única pieza que puede saltar sobre otras.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Movimiento:
+                    </strong>
+
+                    <span>
+                        Forma de L · Puede saltar piezas
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- ALFIL -->
+
+            <article class="card club">
+
+                <div class="card-top">
+
+                    <span class="elo">
+                        ♗ ALFIL
+                    </span>
+
+                    <span class="icon">
+                        ♝
+                    </span>
+
+                </div>
+
+                <h3>
+                    El alfil
+                </h3>
+
+                <p class="question">
+                    “¿Qué diagonales controlo?”
+                </p>
+
+                <p>
+                    El alfil se mueve cualquier número de casillas
+                    en diagonal. Cada alfil permanece siempre
+                    en el mismo color de casilla.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Movimiento:
+                    </strong>
+
+                    <span>
+                        Diagonales · Varias casillas
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- TORRE -->
+
+            <article class="card strong">
+
+                <div class="card-top">
+
+                    <span class="elo">
+                        ♖ TORRE
+                    </span>
+
+                    <span class="icon">
+                        ♜
+                    </span>
+
+                </div>
+
+                <h3>
+                    La torre
+                </h3>
+
+                <p class="question">
+                    “¿Qué líneas tengo abiertas?”
+                </p>
+
+                <p>
+                    La torre se mueve horizontal y verticalmente
+                    tantas casillas como estén disponibles.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Movimiento:
+                    </strong>
+
+                    <span>
+                        Filas · Columnas · Líneas abiertas
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- DAMA -->
+
+            <article class="card expert">
+
+                <div class="card-top">
+
+                    <span class="elo">
+                        ♕ DAMA
+                    </span>
+
+                    <span class="icon">
+                        ♛
+                    </span>
+
+                </div>
+
+                <h3>
+                    La dama
+                </h3>
+
+                <p class="question">
+                    “¿Qué puedo controlar?”
+                </p>
+
+                <p>
+                    La dama combina los movimientos de la torre
+                    y el alfil. Es la pieza de mayor valor material.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Movimiento:
+                    </strong>
+
+                    <span>
+                        Horizontal · Vertical · Diagonal
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- REY -->
+
+            <article class="card master">
+
+                <div class="card-top">
+
+                    <span class="elo">
+                        ♔ REY
+                    </span>
+
+                    <span class="icon">
+                        ♚
+                    </span>
+
+                </div>
+
+                <h3>
+                    El rey
+                </h3>
+
+                <p class="question">
+                    “¿Es segura esta casilla?”
+                </p>
+
+                <p>
+                    El rey se mueve una casilla en cualquier dirección.
+                    Nunca puede colocarse en una casilla controlada
+                    por una pieza enemiga.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Movimiento:
+                    </strong>
+
+                    <span>
+                        Una casilla · Todas las direcciones
+                    </span>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PRACTICA INTERACTIVA
+    ====================================================== -->
+
+    <section class="game-section" id="practica">
+
+        <div class="section-title">
+
+            <p>PRACTICA INTERACTIVA</p>
+
+            <h2>
+                Aprende moviendo
+                <span>las piezas</span>
+            </h2>
+
+            <p class="game-subtitle">
+
+                Selecciona una pieza del menú y después haz clic
+                sobre el tablero para practicar sus movimientos.
+
+            </p>
+
+        </div>
+
+
+        <!-- SELECTOR -->
+
+        <div class="comparison-grid">
+
+            <div class="comparison-box highlighted">
+
+                <div class="big-icon">
+                    ♙
+                </div>
+
+                <h3>
+                    Peón
+                </h3>
+
+                <p>
+                    Practica el movimiento del peón.
+                </p>
+
+                <button
+                    type="button"
+                    class="game-button practice-piece-button"
+                    data-piece="pawn">
+
+                    Practicar ♙
+
+                </button>
+
+            </div>
+
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♞
+                </div>
+
+                <h3>
+                    Caballo
+                </h3>
+
+                <p>
+                    Practica el salto del caballo.
+                </p>
+
+                <button
+                    type="button"
+                    class="game-button practice-piece-button"
+                    data-piece="knight">
+
+                    Practicar ♞
+
+                </button>
+
+            </div>
+
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♗
+                </div>
+
+                <h3>
+                    Alfil
+                </h3>
+
+                <p>
+                    Practica sus diagonales.
+                </p>
+
+                <button
+                    type="button"
+                    class="game-button practice-piece-button"
+                    data-piece="bishop">
+
+                    Practicar ♗
+
+                </button>
+
+            </div>
+
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♖
+                </div>
+
+                <h3>
+                    Torre
+                </h3>
+
+                <p>
+                    Practica filas y columnas.
+                </p>
+
+                <button
+                    type="button"
+                    class="game-button practice-piece-button"
+                    data-piece="rook">
+
+                    Practicar ♖
+
+                </button>
+
+            </div>
+
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♕
+                </div>
+
+                <h3>
+                    Dama
+                </h3>
+
+                <p>
+                    Practica todos sus movimientos.
+                </p>
+
+                <button
+                    type="button"
+                    class="game-button practice-piece-button"
+                    data-piece="queen">
+
+                    Practicar ♕
+
+                </button>
+
+            </div>
+
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♔
+                </div>
+
+                <h3>
+                    Rey
+                </h3>
+
+                <p>
+                    Practica el movimiento del rey.
+                </p>
+
+                <button
+                    type="button"
+                    class="game-button practice-piece-button"
+                    data-piece="king">
+
+                    Practicar ♔
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- TABLERO DE PRACTICA -->
+
+        <div class="game-wrapper"
+             style="margin-top:50px;">
+
+            <div class="game-board-container">
+
+                <div
+                    id="practice-board"
+                    class="game-board">
+                </div>
+
+            </div>
+
+
+            <div class="game-panel">
+
+                <div class="game-status">
+
+                    <span>
+                        PIEZA SELECCIONADA
+                    </span>
+
+                    <h3 id="practice-piece-name">
+                        Peón
+                    </h3>
+
+                    <p id="practice-instruction">
+
+                        Haz clic en una casilla para mover
+                        la pieza.
+
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="practice-white"
+                    class="game-button">
+
+                    ⚪ Practicar con blancas
+
+                </button>
+
+
+                <button
+                    type="button"
+                    id="practice-black"
+                    class="game-button secondary">
+
+                    ⚫ Practicar con negras
+
+                </button>
+
+
+                <button
+                    type="button"
+                    id="practice-reset"
+                    class="game-button secondary">
+
+                    ↩ Reiniciar tablero
+
+                </button>
+
+
+                <div class="move-history">
+
+                    <h3>
+                        ¿Cómo funciona?
+                    </h3>
+
+                    <p
+                        id="practice-explanation"
+                        style="color:#b9a9ca; font-size:14px;">
+
+                        Los puntos del tablero muestran las casillas
+                        a las que puede moverse la pieza.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         REGLAS BASICAS
+    ====================================================== -->
+
+    <section class="comparison">
+
+        <div class="section-title">
+
+            <p>REGLAS BÁSICAS</p>
+
+            <h2>
+                Cosas que debes conocer
+                <span>antes de jugar</span>
+            </h2>
+
+        </div>
+
+
+        <div class="comparison-grid">
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♙
+                </div>
+
+                <h3>
+                    Turnos
+                </h3>
+
+                <p>
+                    Las blancas comienzan.
+                </p>
+
+                <ul>
+
+                    <li>Después juega negras.</li>
+
+                    <li>Los jugadores se alternan.</li>
+
+                    <li>No puedes pasar voluntariamente.</li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="comparison-box highlighted">
+
+                <div class="big-icon">
+                    ♚
+                </div>
+
+                <h3>
+                    Jaque
+                </h3>
+
+                <p>
+                    Tu rey está siendo atacado.
+                </p>
+
+                <ul>
+
+                    <li>Debes responder al jaque.</li>
+
+                    <li>Puedes mover el rey.</li>
+
+                    <li>Puedes bloquear el ataque.</li>
+
+                    <li>Puedes capturar la pieza atacante.</li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♛
+                </div>
+
+                <h3>
+                    Jaque mate
+                </h3>
+
+                <p>
+                    El rey no puede escapar.
+                </p>
+
+                <ul>
+
+                    <li>El rey está en jaque.</li>
+
+                    <li>No existe ninguna respuesta legal.</li>
+
+                    <li>La partida termina.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MOVIMIENTOS ESPECIALES
+    ====================================================== -->
+
+    <section class="levels">
+
+        <div class="section-title">
+
+            <p>MOVIMIENTOS ESPECIALES</p>
+
+            <h2>
+                Algunas reglas que hacen
+                <span>especial al ajedrez</span>
+            </h2>
+
+        </div>
+
+
+        <div class="cards">
+
+            <article class="card beginner">
+
+                <div class="card-top">
+
+                    <span class="elo">
+                        ♔ ENROQUE
+                    </span>
+
+                    <span class="icon">
+                        ♔
+                    </span>
+
+                </div>
+
+                <h3>
+                    El enroque
+                </h3>
+
+                <p class="question">
+                    “¿Puedo proteger mi rey?”
+                </p>
+
+                <p>
+                    Es un movimiento especial que involucra al rey
+                    y una torre. Sirve normalmente para poner al rey
+                    en una posición más segura.
+                </p>
+
+            </article>
+
+
+            <article class="card amateur">
+
+                <div class="card-top">
+
+                    <span class="elo">
+                        ♟ CORONACIÓN
+                    </span>
+
+                    <span class="icon">
+                        ♛
+                    </span>
+
+                </div>
+
+                <h3>
+                    Coronación
+                </h3>
+
+                <p class="question">
+                    “¿Llegué al otro lado?”
+                </p>
+
+                <p>
+                    Cuando un peón llega a la última fila puede
+                    transformarse normalmente en dama, torre,
+                    alfil o caballo.
+                </p>
+
+            </article>
+
+
+            <article class="card club">
+
+                <div class="card-top">
+
+                    <span class="elo">
+                        ♟ CAPTURA ESPECIAL
+                    </span>
+
+                    <span class="icon">
+                        ♟
+                    </span>
+
+                </div>
+
+                <h3>
+                    Captura al paso
+                </h3>
+
+                <p class="question">
+                    “¿Existe una captura especial?”
+                </p>
+
+                <p>
+                    Es una captura especial de peones que puede
+                    producirse después de un avance inicial de dos
+                    casillas.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         NIVELES ELO
+    ====================================================== -->
+
+    <section class="levels" id="niveles">
+
+        <div class="section-title">
+
+            <p>ESCALA DE FUERZA</p>
+
+            <h2>
+                Niveles de ajedrez según el
+                <span>Elo</span>
+            </h2>
+
+        </div>
+
+
+        <div class="cards">
+
+            <article class="card beginner">
+
+                <div class="card-top">
+                    <span class="elo">1000 – 1399</span>
+                    <span class="icon">♟</span>
+                </div>
+
+                <h3>
+                    Principiante
+                </h3>
+
+                <p class="question">
+                    “¿Puedo capturar esa pieza?”
+                </p>
+
+                <p>
+                    Conoce las reglas básicas, pero todavía puede
+                    cometer errores frecuentes como dejar piezas
+                    sin defensa.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Su pensamiento:
+                    </strong>
+
+                    <span>
+                        Capturas · Amenazas · Seguridad del rey
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="card amateur">
+
+                <div class="card-top">
+                    <span class="elo">1400 – 1599</span>
+                    <span class="icon">♞</span>
+                </div>
+
+                <h3>
+                    Aficionado
+                </h3>
+
+                <p class="question">
+                    “¿Qué amenaza mi rival?”
+                </p>
+
+                <p>
+                    Empieza a reconocer patrones tácticos y entiende
+                    mejor la importancia de desarrollar sus piezas.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Su pensamiento:
+                    </strong>
+
+                    <span>
+                        Táctica · Desarrollo · Amenazas
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="card club">
+
+                <div class="card-top">
+                    <span class="elo">1600 – 1799</span>
+                    <span class="icon">♝</span>
+                </div>
+
+                <h3>
+                    Jugador de club medio
+                </h3>
+
+                <p class="question">
+                    “¿Cuál es mi plan?”
+                </p>
+
+                <p>
+                    Comienza a comprender estructuras de peones,
+                    casillas importantes y planes estratégicos.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Su pensamiento:
+                    </strong>
+
+                    <span>
+                        Planes · Estrategia · Estructuras
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="card strong">
+
+                <div class="card-top">
+                    <span class="elo">1800 – 1999</span>
+                    <span class="icon">♜</span>
+                </div>
+
+                <h3>
+                    Jugador de club fuerte
+                </h3>
+
+                <p class="question">
+                    “¿Qué posición obtendré después?”
+                </p>
+
+                <p>
+                    Calcula variantes con mayor precisión y combina
+                    conceptos tácticos con comprensión posicional.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Su pensamiento:
+                    </strong>
+
+                    <span>
+                        Cálculo · Posición · Iniciativa
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="card expert">
+
+                <div class="card-top">
+                    <span class="elo">2000 – 2199</span>
+                    <span class="icon">♛</span>
+                </div>
+
+                <h3>
+                    Experto / Candidato a Maestro
+                </h3>
+
+                <p class="question">
+                    “¿Cuál es la continuación más precisa?”
+                </p>
+
+                <p>
+                    Analiza posiciones complejas, calcula variantes
+                    y busca recursos concretos.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Su pensamiento:
+                    </strong>
+
+                    <span>
+                        Precisión · Cálculo · Preparación
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="card master">
+
+                <div class="card-top">
+                    <span class="elo">2200 – 2299</span>
+                    <span class="icon">♚</span>
+                </div>
+
+                <h3>
+                    Nivel de maestro
+                </h3>
+
+                <p class="question">
+                    “¿Qué exige objetivamente la posición?”
+                </p>
+
+                <p>
+                    Combina cálculo preciso con una comprensión
+                    avanzada de la estrategia y la táctica.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Su pensamiento:
+                    </strong>
+
+                    <span>
+                        Evaluación · Cálculo · Técnica
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="card grandmaster">
+
+                <div class="card-top">
+                    <span class="elo">2300+</span>
+                    <span class="icon">👑</span>
+                </div>
+
+                <h3>
+                    Gran Maestro
+                </h3>
+
+                <p class="question">
+                    “¿Qué recursos tiene la posición?”
+                </p>
+
+                <p>
+                    Combina cálculo profundo, reconocimiento de
+                    patrones, preparación, experiencia y comprensión
+                    estratégica.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Su pensamiento:
+                    </strong>
+
+                    <span>
+                        Patrones · Cálculo · Estrategia
+                    </span>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         JUEGO CONTRA STOCKFISH
+    ====================================================== -->
+
+    <section class="game-section" id="jugar">
+
+        <div class="section-title">
+
+            <p>PON A PRUEBA TU PENSAMIENTO</p>
+
+            <h2>
+                Juega una partida de
+                <span>ajedrez</span>
+            </h2>
+
+            <p class="game-subtitle">
+                Tú juegas con blancas. La IA juega con negras.
+            </p>
+
+        </div>
+
+
+        <div class="game-wrapper">
+
+            <div class="game-board-container">
+
+                <div
+                    id="game-board"
+                    class="game-board">
+                </div>
+
+            </div>
+
+
+            <div class="game-panel">
+
+                <div class="game-status">
+
+                    <span>
+                        PARTIDA
+                    </span>
+
+                    <h3 id="game-status">
+                        Tu turno
+                    </h3>
+
+                    <p id="thinking-status">
+                        Selecciona una pieza blanca.
+                    </p>
+
+                </div>
+
+
+                <label for="difficulty">
+                    Nivel de la IA
+                </label>
+
+
+                <select id="difficulty">
+
+                    <option value="6">
+                        ♟ Fácil
+                    </option>
+
+                    <option value="10">
+                        ♞ Medio
+                    </option>
+
+                    <option value="14" selected>
+                        ♛ Difícil
+                    </option>
+
+                    <option value="18">
+                        👑 Experto
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="button"
+                    id="new-game"
+                    class="game-button">
+
+                    ♟ Nueva partida
+
+                </button>
+
+
+                <button
+                    type="button"
+                    id="undo-move"
+                    class="game-button secondary">
+
+                    ↩ Deshacer
+
+                </button>
+
+
+                <div class="move-history">
+
+                    <h3>
+                        Movimientos
+                    </h3>
+
+                    <ol id="move-list"></ol>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         COMPARACIÓN DEL PENSAMIENTO
+    ====================================================== -->
+
+    <section class="comparison" id="comparacion">
+
+        <div class="section-title">
+
+            <p>TRES FORMAS DE PENSAR</p>
+
+            <h2>
+                Promedio, experto y
+                <span>Gran Maestro</span>
+            </h2>
+
+        </div>
+
+
+        <div class="comparison-grid">
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♟
+                </div>
+
+                <h3>
+                    Jugador promedio
+                </h3>
+
+                <p>
+                    “¿Qué puedo hacer ahora?”
+                </p>
+
+                <ul>
+
+                    <li>
+                        Busca capturas.
+                    </li>
+
+                    <li>
+                        Detecta amenazas inmediatas.
+                    </li>
+
+                    <li>
+                        Calcula pocas variantes.
+                    </li>
+
+                    <li>
+                        Puede pasar por alto recursos defensivos.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="comparison-box highlighted">
+
+                <div class="big-icon">
+                    ♞
+                </div>
+
+                <h3>
+                    Jugador experto
+                </h3>
+
+                <p>
+                    “¿Qué plan me da mejores posibilidades?”
+                </p>
+
+                <ul>
+
+                    <li>
+                        Compara diferentes candidatos.
+                    </li>
+
+                    <li>
+                        Calcula variantes concretas.
+                    </li>
+
+                    <li>
+                        Evalúa estructuras de peones.
+                    </li>
+
+                    <li>
+                        Busca planes a medio plazo.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♚
+                </div>
+
+                <h3>
+                    Gran Maestro
+                </h3>
+
+                <p>
+                    “¿Cuál es la esencia de esta posición?”
+                </p>
+
+                <ul>
+
+                    <li>
+                        Reconoce patrones rápidamente.
+                    </li>
+
+                    <li>
+                        Calcula variantes críticas.
+                    </li>
+
+                    <li>
+                        Evalúa recursos tácticos y estratégicos.
+                    </li>
+
+                    <li>
+                        Encuentra planes extremadamente precisos.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FRASE
+    ====================================================== -->
+
+    <section class="quote">
+
+        <div>
+
+            <span>
+                ♜
+            </span>
+
+            <h2>
+
+                “La fuerza de un ajedrecista no está solamente
+                en saber qué mover, sino en comprender
+                <em>por qué</em>.”
+
+            </h2>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTRASEÑAS
+    ====================================================== -->
+
+    <section class="rating-section" id="contraseñas">
+
+        <div class="section-title">
+
+            <p>
+                APARTADO ESPECIAL
+            </p>
+
+            <h2>
+                Acceso por
+                <span>contraseña</span>
+            </h2>
+
+            <p class="rating-description">
+
+                Introduce una contraseña secreta para identificar al usuario
+                y recibir su mensaje personalizado.
+
+            </p>
+
+        </div>
+
+
+        <div class="rating-card">
+
+            <div
+                class="rating-number"
+                id="password-icon">
+
+                🔐
+
+            </div>
+
+
+            <p>
+                Escribe la contraseña secreta del usuario:
+            </p>
+
+
+            <input
+                type="password"
+                id="password-input"
+                placeholder="Contraseña"
+                autocomplete="off"
+                style="
+                    width:100%;
+                    max-width:450px;
+                    padding:14px;
+                    border-radius:10px;
+                    border:1px solid #54346e;
+                    background:#1b1027;
+                    color:white;
+                    outline:none;
+                    margin-bottom:12px;
+                    font-size:16px;
+                ">
+
+
+            <button
+                type="button"
+                id="password-button"
+                class="game-button"
+                style="max-width:450px;">
+
+                🔓 Entrar
+
+            </button>
+
+
+            <div
+                class="rating-message"
+                id="password-message">
+
+            </div>
+
+
+            <!-- CONTENIDO DE LOS 6 USUARIOS -->
+
+            <div
+                id="password-content"
+                style="
+                    display:none;
+                    margin-top:30px;
+                    text-align:left;
+                ">
+
+                <div
+                    class="comparison-box highlighted">
+
+                    <div class="big-icon">
+                        ♟
+                    </div>
+
+                    <h3 id="password-title">
+                        Apartado
+                    </h3>
+
+                    <p id="password-text">
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         AUTOR
+    ====================================================== -->
+
+    <section class="author-section" id="autor">
+
+        <div class="author-card">
+
+            <div class="author-piece">
+                ♞
+            </div>
+
+
+            <div class="author-content">
+
+                <p class="author-label">
+                    SOBRE EL AUTOR
+                </p>
+
+                <h2>
+                    ¿Quién escribe esta página?
+                </h2>
+
+                <p>
+
+                    Quien escribe esta página es
+                    <strong>
+                        Miguel Ivan Cerezo Hernandez
+                    </strong>,
+                    actual campeón del CETIS 3.
+
+                </p>
+
+                <p>
+
+                    He ganado un estatal en la Ciudad de México
+                    y conseguí un trofeo para la escuela.
+
+                </p>
+
+                <p>
+
+                    Y ahora puede que me esté enajenando en mi
+                    teléfono o jugando Roblox con mis amigos diciendo:
+
+                </p>
+
+
+                <div class="roblox-quote">
+
+                    “Eh, vato, ey”
+
+                </div>
+
+
+                <p>
+
+                    Pero ahora estoy aquí programando esta página
+                    porque me gustaría compartir algo que me gusta:
+                    el ajedrez y la forma en que pensamos cuando jugamos.
+
+                </p>
+
+
+                <div class="question-box">
+
+                    <span>
+                        ♟
+                    </span>
+
+                    <strong>
+                        ¿Qué opinas de mi páginaaaaaa?
+                    </strong>
+
+                    <small>
+                        1/10?????
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CALIFICACIÓN
+    ====================================================== -->
+
+    <section
+        class="rating-section"
+        id="calificacion">
+
+        <div class="section-title">
+
+            <p>
+                AHORA TE TOCA A TI
+            </p>
+
+            <h2>
+
+                ¿Qué opinas de mi
+                <span>página?</span>
+
+            </h2>
+
+            <p class="rating-description">
+
+                Califica esta página del 1 al 10.
+
+            </p>
+
+        </div>
+
+
+        <div class="rating-card">
+
+            <div
+                class="rating-number"
+                id="rating-number">
+
+                —
+
+            </div>
+
+
+            <p>
+                Selecciona una calificación:
+            </p>
+
+
+            <div class="rating-buttons">
+
+                <button data-rating="1">1</button>
+
+                <button data-rating="2">2</button>
+
+                <button data-rating="3">3</button>
+
+                <button data-rating="4">4</button>
+
+                <button data-rating="5">5</button>
+
+                <button data-rating="6">6</button>
+
+                <button data-rating="7">7</button>
+
+                <button data-rating="8">8</button>
+
+                <button data-rating="9">9</button>
+
+                <button data-rating="10">10</button>
+
+            </div>
+
+
+            <div
+                class="rating-message"
+                id="rating-message">
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONCLUSIÓN
+    ====================================================== -->
+
+    <section class="conclusion">
+
+        <div class="section-title">
+
+            <p>
+                EN RESUMEN
+            </p>
+
+            <h2>
+
+                El tablero cambia cuando
+                <span>
+                    cambia tu forma de pensar
+                </span>
+
+            </h2>
+
+        </div>
+
+        <p>
+
+            El progreso en ajedrez no consiste únicamente en aumentar
+            el Elo. También implica aprender a observar más información,
+            calcular con mayor precisión, reconocer patrones y construir
+            planes.
+
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <div class="footer-logo">
+
+            ♞ Pensamiento Ajedrecístico
+
+        </div>
+
+        <p>
+
+            Una exploración de la evolución del pensamiento en el ajedrez.
+
+        </p>
+
+        <small>
+
+            Los rangos de Elo son aproximados y no equivalen automáticamente
+            a títulos oficiales.
+
+        </small>
+
+    </footer>
+
+
+    <!-- =====================================================
+         STOCKFISH
+    ====================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/stockfish.js@10.0.2/stockfish.min.js"></script>
+
+
+    <!-- =====================================================
+         JAVASCRIPT PRINCIPAL
+    ====================================================== -->
+
+    <script src="script.js"></script>
+
+
+    <!-- =====================================================
+         APRENDIZAJE INTERACTIVO
+    ====================================================== -->
+
+    <script>
+
+        /* =================================================
+           CONFIGURACIÓN
+        ================================================= */
+
+        const practiceBoard =
+            document.getElementById("practice-board");
+
+        const practicePieceName =
+            document.getElementById("practice-piece-name");
+
+        const practiceInstruction =
+            document.getElementById("practice-instruction");
+
+        const practiceExplanation =
+            document.getElementById("practice-explanation");
+
+
+        let practicePiece = "pawn";
+
+        let practiceColor = "w";
+
+        let practicePosition = "d4";
+
+
+        const practicePieces = {
+
+            pawn: {
+                w: "♙",
+                b: "♟"
+            },
+
+            knight: {
+                w: "♘",
+                b: "♞"
+            },
+
+            bishop: {
+                w: "♗",
+                b: "♝"
+            },
+
+            rook: {
+                w: "♖",
+                b: "♜"
+            },
+
+            queen: {
+                w: "♕",
+                b: "♛"
+            },
+
+            king: {
+                w: "♔",
+                b: "♚"
+            }
+
+        };
+
+
+        const practiceNames = {
+
+            pawn: "Peón",
+
+            knight: "Caballo",
+
+            bishop: "Alfil",
+
+            rook: "Torre",
+
+            queen: "Dama",
+
+            king: "Rey"
+
+        };
+
+
+        /* =================================================
+           CREAR TABLERO DE PRACTICA
+        ================================================= */
+
+        function renderPracticeBoard() {
+
+            practiceBoard.innerHTML = "";
+
+
+            for (
+                let row = 0;
+                row < 8;
+                row++
+            ) {
+
+                for (
+                    let col = 0;
+                    col < 8;
+                    col++
+                ) {
+
+                    const square =
+                        document.createElement("div");
+
+
+                    const file =
+                        String.fromCharCode(
+                            97 + col
+                        );
+
+
+                    const rank =
+                        8 - row;
+
+
+                    const squareName =
+                        file + rank;
+
+
+                    square.dataset.square =
+                        squareName;
+
+
+                    square.classList.add(
+                        "game-square"
+                    );
+
+
+                    if (
+                        (row + col) % 2 === 0
+                    ) {
+
+                        square.classList.add(
+                            "light"
+                        );
+
+                    } else {
+
+                        square.classList.add(
+                            "dark"
+                        );
+
+                    }
+
+
+                    /*
+                       PIEZA
+                    */
+
+                    if (
+                        squareName ===
+                        practicePosition
+                    ) {
+
+                        square.textContent =
+                            practicePieces[
+                                practicePiece
+                            ][
+                                practiceColor
+                            ];
+
+
+                        if (
+                            practiceColor === "w"
+                        ) {
+
+                            square.classList.add(
+                                "white-piece"
+                            );
+
+                        } else {
+
+                            square.classList.add(
+                                "black-piece"
+                            );
+
+                        }
+
+                    }
+
+
+                    /*
+                       MOVIMIENTOS LEGALES
+                    */
+
+                    if (
+                        isPracticeMoveLegal(
+                            practicePosition,
+                            squareName,
+                            practicePiece
+                        )
+                    ) {
+
+                        square.classList.add(
+                            "legal"
+                        );
+
+                    }
+
+
+                    /*
+                       CLICK
+                    */
+
+                    square.addEventListener(
+                        "click",
+                        function() {
+
+                            handlePracticeClick(
+                                squareName
+                            );
+
+                        }
+                    );
+
+
+                    practiceBoard.appendChild(
+                        square
+                    );
+
+                }
+
+            }
+
+        }
+
+
+        /* =================================================
+           CONVERTIR CASILLA
+        ================================================= */
+
+        function squareToCoordinates(square) {
+
+            return {
+
+                x:
+                    square.charCodeAt(0) - 97,
+
+                y:
+                    Number(
+                        square[1]
+                    ) - 1
+
+            };
+
+        }
+
+
+        /* =================================================
+           COMPROBAR MOVIMIENTO
+        ================================================= */
+
+        function isPracticeMoveLegal(
+            from,
+            to,
+            piece
+        ) {
+
+            if (
+                from === to
+            ) {
+
+                return false;
+
+            }
+
+
+            const start =
+                squareToCoordinates(
+                    from
+                );
+
+
+            const end =
+                squareToCoordinates(
+                    to
+                );
+
+
+            const dx =
+                Math.abs(
+                    end.x - start.x
+                );
+
+
+            const dy =
+                Math.abs(
+                    end.y - start.y
+                );
+
+
+            /*
+               PEON
+            */
+
+            if (
+                piece === "pawn"
+            ) {
+
+                const direction =
+                    practiceColor === "w"
+                        ? 1
+                        : -1;
+
+
+                /*
+                   Una casilla
+                */
+
+                if (
+                    dx === 0 &&
+                    end.y - start.y === direction
+                ) {
+
+                    return true;
+
+                }
+
+
+                /*
+                   Dos casillas desde posición inicial
+                */
+
+                const startingRank =
+                    practiceColor === "w"
+                        ? 2
+                        : 7;
+
+
+                if (
+                    dx === 0 &&
+                    start.y === startingRank - 1 &&
+                    end.y - start.y === direction * 2
+                ) {
+
+                    return true;
+
+                }
+
+
+                /*
+                   Captura diagonal
+                   Se muestra como posibilidad
+                   de aprendizaje.
+                */
+
+                if (
+                    dx === 1 &&
+                    end.y - start.y === direction
+                ) {
+
+                    return true;
+
+                }
+
+
+                return false;
+
+            }
+
+
+            /*
+               CABALLO
+            */
+
+            if (
+                piece === "knight"
+            ) {
+
+                return (
+                    (dx === 1 && dy === 2) ||
+                    (dx === 2 && dy === 1)
+                );
+
+            }
+
+
+            /*
+               ALFIL
+            */
+
+            if (
+                piece === "bishop"
+            ) {
+
+                return (
+                    dx === dy
+                );
+
+            }
+
+
+            /*
+               TORRE
+            */
+
+            if (
+                piece === "rook"
+            ) {
+
+                return (
+                    dx === 0 ||
+                    dy === 0
+                );
+
+            }
+
+
+            /*
+               DAMA
+            */
+
+            if (
+                piece === "queen"
+            ) {
+
+                return (
+                    dx === 0 ||
+                    dy === 0 ||
+                    dx === dy
+                );
+
+            }
+
+
+            /*
+               REY
+            */
+
+            if (
+                piece === "king"
+            ) {
+
+                return (
+                    dx <= 1 &&
+                    dy <= 1
+                );
+
+            }
+
+
+            return false;
+
+        }
+
+
+        /* =================================================
+           CLICK EN PRACTICA
+        ================================================= */
+
+        function handlePracticeClick(
+            square
+        ) {
+
+            if (
+                isPracticeMoveLegal(
+                    practicePosition,
+                    square,
+                    practicePiece
+                )
+            ) {
+
+                practicePosition =
+                    square;
+
+
+                practiceInstruction.textContent =
+                    "¡Movimiento correcto! Prueba otra casilla.";
+
+
+                renderPracticeBoard();
+
+            } else {
+
+                if (
+                    square === practicePosition
+                ) {
+
+                    practiceInstruction.textContent =
+                        "Esta es la pieza. Busca las casillas marcadas.";
+
+                } else {
+
+                    practiceInstruction.textContent =
+                        "Esa casilla no corresponde al movimiento de esta pieza.";
+
+                }
+
+            }
+
+        }
+
+
+        /* =================================================
+           CAMBIAR PIEZA
+        ================================================= */
+
+        const practiceButtons =
+            document.querySelectorAll(
+                ".practice-piece-button"
+            );
+
+
+        practiceButtons.forEach(
+            function(button) {
+
+                button.addEventListener(
+                    "click",
+                    function() {
+
+                        practicePiece =
+                            button.dataset.piece;
+
+
+                        practicePosition =
+                            "d4";
+
+
+                        practicePieceName.textContent =
+                            practiceNames[
+                                practicePiece
+                            ];
+
+
+                        updatePracticeExplanation();
+
+
+                        practiceInstruction.textContent =
+                            "Las casillas moradas marcadas muestran dónde puede moverse.";
+
+
+                        renderPracticeBoard();
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =================================================
+           CAMBIAR COLOR
+        ================================================= */
+
+        document
+            .getElementById("practice-white")
+            .addEventListener(
+                "click",
+                function() {
+
+                    practiceColor = "w";
+
+                    practicePosition = "d4";
+
+                    practiceInstruction.textContent =
+                        "Ahora estás practicando con blancas.";
+
+                    renderPracticeBoard();
+
+                }
+            );
+
+
+        document
+            .getElementById("practice-black")
+            .addEventListener(
+                "click",
+                function() {
+
+                    practiceColor = "b";
+
+                    practicePosition = "d5";
+
+                    practiceInstruction.textContent =
+                        "Ahora estás practicando con negras.";
+
+                    renderPracticeBoard();
+
+                }
+            );
+
+
+        /* =================================================
+           REINICIAR
+        ================================================= */
+
+        document
+            .getElementById("practice-reset")
+            .addEventListener(
+                "click",
+                function() {
+
+                    practicePosition =
+                        practiceColor === "w"
+                            ? "d4"
+                            : "d5";
+
+
+                    practiceInstruction.textContent =
+                        "Tablero reiniciado. Prueba los movimientos.";
+
+                    renderPracticeBoard();
+
+                }
+            );
+
+
+        /* =================================================
+           EXPLICACIONES
+        ================================================= */
+
+        function updatePracticeExplanation() {
+
+            const explanations = {
+
+                pawn:
+                    "El peón avanza hacia adelante y captura en diagonal. Desde su posición inicial puede avanzar dos casillas.",
+
+                knight:
+                    "El caballo se mueve en forma de L: dos casillas en una dirección y una en otra. Puede saltar piezas.",
+
+                bishop:
+                    "El alfil se mueve en diagonal tantas casillas como estén disponibles.",
+
+                rook:
+                    "La torre se mueve horizontal o verticalmente tantas casillas como estén disponibles.",
+
+                queen:
+                    "La dama combina el movimiento de la torre y el alfil: puede moverse horizontal, vertical y diagonalmente.",
+
+                king:
+                    "El rey puede moverse una casilla en cualquier dirección. En una partida real no puede moverse a una casilla atacada."
+
+            };
+
+
+            practiceExplanation.textContent =
+                explanations[
+                    practicePiece
+                ];
+
+        }
+
+
+        /* =================================================
+           INICIAR TABLERO
+        ================================================= */
+
+        updatePracticeExplanation();
+
+        renderPracticeBoard();
+
+
+        /* =================================================
+           CONTRASEÑAS
+        ================================================= */
+
+        const passwordInput =
+            document.getElementById(
+                "password-input"
+            );
+
+
+        const passwordButton =
+            document.getElementById(
+                "password-button"
+            );
+
+
+        const passwordMessage =
+            document.getElementById(
+                "password-message"
+            );
+
+
+        const passwordContent =
+            document.getElementById(
+                "password-content"
+            );
+
+
+        const passwordTitle =
+            document.getElementById(
+                "password-title"
+            );
+
+
+        const passwordText =
+            document.getElementById(
+                "password-text"
+            );
+
+
+        /*
+           CAMBIA ESTAS CONTRASEÑAS
+           POR LAS QUE TÚ QUIERAS.
+        */
+
+        const passwords = {
+
+            "frio": {
+    title: "Mis abuelos ❤️",
+    text: `Mis abuelos son esas dos personas maravillosas que, a lo largo de mi vida, han ocupado un lugar que nadie más podría llenar. Han sido como una madre y un padre para mí cuando, por diferentes circunstancias, no tuve a mis dos padres a mi lado como hubiera querido. Ellos estuvieron ahí, brindándome su cariño, su apoyo, sus consejos y, sobre todo, ese amor tan sincero que no necesita grandes palabras para demostrarse.
+
+A lo largo de mi vida hemos vivido muchísimas cosas juntos, momentos buenos, momentos difíciles, alegrías, tristezas, risas y experiencias que me han enseñado demasiado. Gracias a ellos he aprendido muchas cosas, no solamente sobre la vida, sino también sobre el respeto, la humildad, el agradecimiento y el verdadero significado de amar a alguien sin esperar nada a cambio. Me han enseñado a levantarme cuando las cosas se ponen difíciles, a valorar lo poco o mucho que tengo y a entender que la familia no solamente se trata de compartir la misma sangre, sino de estar presente cuando más se necesita.
+
+Ellos me han dado algo que siempre voy a llevar en el corazón: el cariño, la protección y el amor de unos padres. Han estado para mí de una manera que quizá nunca termine de agradecerles lo suficiente. Porque ser abuelos ya es algo hermoso, pero convertirse también en esas figuras que te cuidan, te aconsejan, te protegen y te ayudan a crecer es algo que merece todo mi respeto y admiración. Y ellos lo han hecho de una manera que jamás voy a olvidar.
+
+Sinceramente, no existen palabras suficientes para expresar todo el agradecimiento que siento por ellos. Gracias por cada consejo, por cada abrazo, por cada preocupación, por cada sacrificio que hicieron por mí, por cada vez que estuvieron pendientes de cómo estaba y por todas esas cosas que quizá hicieron en silencio, sin esperar que yo se los agradeciera. Gracias por darme tanto amor, por tenerme paciencia, por corregirme cuando era necesario y por enseñarme, con sus acciones, lo que significa querer de verdad a una persona.
+
+Tal vez no siempre se los diga, tal vez a veces no encuentre la manera correcta de expresar lo que siento, o quizá no me dé cuenta en el momento de todo lo que hacen por mí, pero quiero que sepan que valoro absolutamente todo. Cada esfuerzo, cada detalle y cada momento que hemos compartido significa muchísimo para mí. Si hoy he aprendido tantas cosas y he crecido con tantos valores, es porque ustedes han formado una parte enorme de la persona que soy y de la persona que quiero llegar a ser.
+
+Y sí, he aprendido bastante en esta vida… hasta a no ser un reguetón, JAJAJAJA. 😂❤️ Pero, hablando en serio, una de las lecciones más grandes que me han dado es que el amor verdadero se demuestra con hechos, con presencia y con ese apoyo que permanece incluso cuando las cosas no son fáciles.
+
+Me siento muy afortunado de tenerlos en mi vida. Porque, aunque las circunstancias no siempre hayan sido como yo hubiera querido, ustedes me dieron ese amor que necesitaba, me hicieron sentir acompañado y me demostraron que nunca hay que dejar de valorar a las personas que realmente están para uno. Ustedes no solamente han sido mis abuelos; han sido mis guías, mis protectores, mis consejeros y esas dos personas a las que siempre voy a mirar con admiración y cariño.
+
+No sé qué me depare el futuro, pero sí sé algo: siempre voy a llevarlos conmigo, en mis pensamientos, en mis recuerdos y, sobre todo, en mi corazón. Quiero que algún día puedan mirar todo lo que he logrado y sentirse orgullosos de saber que una parte de todo eso también es gracias a ustedes, porque estuvieron presentes en mi crecimiento y me dieron herramientas para seguir adelante.
+
+Mi mayor deseo es poder devolverles, aunque sea un poquito, todo lo que ustedes me han dado. Poder verlos felices, tranquilos y orgullosos de mí. Poder abrazarlos muchas veces más, compartir nuevos momentos y crear recuerdos que algún día pueda recordar con una sonrisa. Porque si algo tengo claro es que el tiempo pasa, uno crece y la vida cambia, pero el amor y el agradecimiento que siento por ustedes siempre van a permanecer.
+
+Gracias por ser mis abuelos, pero también por ser ese padre y esa madre que la vida me permitió encontrar en ustedes. Gracias por quererme, cuidarme, guiarme y acompañarme durante tantos años. Gracias por nunca dejar de enseñarme y por darme tanto sin pedirme nada a cambio. Perdón si alguna vez no he sabido demostrarles cuánto los amo o si no he valorado como debía alguno de sus esfuerzos, pero créanme que cada cosa que han hecho por mí tiene un lugar especial en mi corazón.
+
+Los amo muchísimo, abuelitos. ❤️ No hay dinero, regalo ni palabras que puedan pagar todo lo que han hecho por mí. Y si pudiera elegir nuevamente a las personas que quiero tener a mi lado para enseñarme, cuidarme y acompañarme en esta vida, sin pensarlo los volvería a elegir a ustedes.
+
+Porque para mí ustedes no son solamente mis abuelos: son mi hogar, mi ejemplo, mi refugio y una de las bendiciones más grandes que la vida me ha regalado. Y mientras tenga la oportunidad de decírselos, nunca quiero que olviden lo importantes que son para mí. Gracias por darme tanto amor cuando más lo necesitaba y por convertirse en dos de las personas más valiosas de mi vida. Los llevaré siempre en mi corazón, hoy, mañana y toda la vida. ❤️‍🩹🫶🏻`
+},
+
+            "paqueteria": {
+    title: "Para Manuel, Amaya y mamá Paulina ❤️",
+    text: `MANUEL, UNA PERSONA QUE ADMIRO ❤️
+
+Manuel, sinceramente, eres una de las personas que más admiro, porque desde mi punto de vista eres el padre más excelente que conozco. De verdad, considero que mi hermana Amaya tiene al mejor papá que la vida le pudo dar, una persona que puede acompañarla, enseñarle, guiarla y brindarle ese amor que todo hijo merece recibir. Y aunque tú y yo casi no hablemos, quiero que sepas que eres alguien importante para mí y que te tengo un agradecimiento muy sincero por la manera en que te has portado conmigo.
+
+Quizá no te lo diga muy seguido, quizá nuestras conversaciones no sean tan frecuentes y tal vez no tengamos esa convivencia que me gustaría tener, pero eso no significa que no valore la persona que eres. Al contrario, agradezco mucho que hayas sido una excelente persona conmigo, que me hayas tratado bien y que, de alguna manera, también formes parte de mi vida y de la historia de mi familia.
+
+Para mí, ver que mi hermana tiene a alguien como tú a su lado me da tranquilidad, porque quiero que ella crezca rodeada de amor, comprensión, respeto y apoyo. Quiero que tenga a alguien que le enseñe a distinguir lo bueno de lo malo, que la ayude a levantarse cuando se equivoque, que celebre sus logros y que le recuerde lo valiosa que es incluso en sus días más difíciles. Y sinceramente, espero que tú puedas ser esa persona para ella durante toda su vida.
+
+No te imaginas lo importante que es para mí saber que mi hermanita tiene una familia que puede darle cariño y acompañarla en su crecimiento. Yo quiero lo mejor para Amaya, quiero que tenga una infancia bonita, que disfrute de cada etapa de su vida y que nunca tenga que dudar de cuánto la aman sus padres.
+
+Por eso, Manuel, gracias. Gracias por ser como eres conmigo, por ser parte de la vida de mi hermana y por asumir una de las responsabilidades más bonitas y grandes que existen: ser padre. Sé que nadie es perfecto y que todos cometemos errores, pero para mí lo importante es tener la voluntad de aprender, mejorar y dar lo mejor de uno mismo por las personas que ama.
+
+Espero que con el tiempo podamos conocernos más, hablar más y compartir momentos que nos permitan construir una relación más cercana. No te considero importante solamente porque seas el padre de mi hermana, sino también porque has demostrado ser una buena persona conmigo, y eso es algo que sinceramente valoro muchísimo.
+
+De corazón, deseo que tú y Amaya construyan miles de recuerdos hermosos, que nunca les falten motivos para reír y que, cuando ella crezca, pueda mirar hacia atrás y sentirse orgullosa del padre que tuvo a su lado.
+
+Gracias por ser el papá de mi hermanita y por ser una persona a la que puedo admirar. Espero que la vida te dé muchas alegrías y que siempre encuentres motivos para sentirte orgulloso de la familia que estás formando. Y recuerda que, aunque no hablemos demasiado, te tengo aprecio y te deseo lo mejor. ❤️
+
+
+AMAYA, MI QUERIDA HERMANITA 🩷
+
+Amaya, mi querida hermanita, aunque todavía no tengamos la oportunidad de conocernos y convivir como me gustaría, quiero que sepas algo que para mí tiene un significado enorme: tu llegada al mundo protagonizó uno de los días más importantes y bonitos de mi vida. El día en que naciste y llegaste a mi vida me diste una nueva ilusión, un nuevo propósito y una razón más para querer seguir creciendo, aprendiendo y convirtiéndome en una mejor persona.
+
+Quizá todavía eres muy pequeña para comprender estas palabras, quizá cuando las leas no entiendas completamente lo que significas para mí, pero deseo que algún día puedas hacerlo. Porque, aunque todavía no hayamos podido compartir tantos momentos juntos, el cariño que siento por ti es enorme. No necesito haber vivido cientos de experiencias contigo para saber que eres alguien muy especial para mí. Eres mi hermana, una parte de mi familia y una personita a la que quiero ver crecer, aprender, descubrir el mundo y convertirse en alguien que se sienta orgullosa de sí misma.
+
+Sinceramente, hermanita, te quiero muchísimo, más de lo que a veces sé expresar con palabras. Quiero estar presente en tu vida, acompañarte en tus aventuras, celebrar tus logros, escucharte cuando tengas problemas y ayudarte cuando sientas que algo es demasiado difícil. Quiero que algún día puedas verme no solamente como tu hermano mayor, sino también como alguien en quien puedas confiar, alguien que te escuche sin juzgarte y que siempre quiera verte feliz.
+
+Y, obviamente, cuando por fin estemos juntos, voy a hacer todo lo posible para enseñarte a jugar ajedrez. JAJAJAJA. 😛♟️ Quiero que aprendas a pensar estratégicamente, a tener paciencia, a analizar las situaciones y a comprender que, así como en el ajedrez, en la vida no siempre se gana, pero de cada experiencia podemos aprender algo nuevo. ¡Y claro que voy a intentar convertirte en una campeona! No pienso dejar que me ganes tan fácilmente, aunque quién sabe, capaz y terminas siendo mejor que yo. JAJAJAJA.
+
+También quiero enseñarte muchas cosas, compartir contigo mis conocimientos y ayudarte a descubrir todo lo que eres capaz de hacer. Quiero que seas una niña, una adolescente y una mujer inteligente, segura de ti misma, curiosa y con la libertad de pensar por tu propia cuenta. Pero, sobre todo, quiero que seas feliz siendo tú misma, que nunca sientas que necesitas ser perfecta para merecer amor y que entiendas que tu valor no depende de las opiniones de otras personas.
+
+Y OBVIAMENTE, TAMBIÉN TE VOY A MOSTRAR DRAGON BALL. JAJAJAJA. 🐉🔥 No puede ser que seas mi hermanita y no conozcas las aventuras de Goku. Tenemos que ver capítulos juntos, hablar de nuestros personajes favoritos y disfrutar de todas esas cosas que algún día se convertirán en recuerdos bonitos para los dos. Ya me imagino intentando explicarte todo el universo de Dragon Ball y tú preguntándome mil cosas. JAJAJAJA.
+
+Pero, fuera de las bromas, hay algo que quiero que tengas siempre presente: nunca vas a tener que ganarte mi cariño. No tienes que ser la mejor estudiante, la más inteligente ni la niña más perfecta del mundo para que yo te quiera. Te voy a querer por ser tú, por existir y por ser esa hermanita que llegó a mi vida para ocupar un lugar que nadie más podría ocupar.
+
+Quiero que crezcas sabiendo que tienes derecho a soñar en grande, a equivocarte, a cambiar de opinión y a descubrir quién quieres ser. Quiero que tengas la confianza de contarme tus preocupaciones, tus alegrías, tus secretos y hasta las cosas más tontas que te hagan reír. Quiero ser ese hermano con el que puedas jugar, bromear, aprender y, cuando sea necesario, hablar de las cosas serias de la vida.
+
+Y si algún día estás triste, si sientes que nadie te comprende o si simplemente necesitas hablar con alguien, espero poder estar ahí para escucharte y recordarte que no tienes que enfrentar todo tú sola. No siempre voy a tener todas las respuestas, pero siempre voy a intentar escucharte con cariño y ayudarte en lo que pueda.
+
+No sé cómo será nuestra relación cuando crezcas, ni cuántas aventuras nos esperan, pero tengo muchísimas ganas de descubrirlo. Quiero recuperar el tiempo que no hemos podido compartir, conocerte de verdad, descubrir tus gustos, saber qué cosas te hacen feliz y construir contigo una relación de hermanos llena de confianza, respeto y amor.
+
+Amaya, nunca olvides que tienes un hermano que te quiere muchísimo y que desea verte feliz. Espero que la vida te regale experiencias maravillosas, personas que te quieran de verdad y oportunidades para cumplir todos tus sueños. Y, cuando crezcas, quiero que recuerdes que desde tu llegada al mundo ya eras alguien muy importante para mí.
+
+Te quiero muchísimo, hermanita. ❤️‍🩹 Eres una de las alegrías más bonitas que me ha dado la vida y espero que algún día podamos abrazarnos, reírnos de todas nuestras tonterías, jugar ajedrez, ver Dragon Ball y crear recuerdos que podamos contar durante muchos años.
+
+Y prepárate, porque tu hermano mayor tiene muchas cosas que enseñarte, muchas bromas que hacerte y un montón de abrazos que darte. JAJAJAJA. 😛🫶🏻
+
+
+MAMÁ PAULINA, MI MAMÁ ❤️‍🩹
+
+Mamá, Paulina, hay tantas cosas que quisiera decirte que sinceramente a veces no sé por dónde empezar. Nuestra separación ocurrió cuando yo tenía apenas seis años, una edad en la que todavía era muy pequeño para comprender por completo muchas de las situaciones que sucedían a mi alrededor. Con el paso del tiempo fui creciendo, aprendiendo y entendiendo que la vida no siempre sucede como uno quisiera, que existen circunstancias difíciles y que, aunque las personas no siempre puedan estar físicamente cerca, eso no significa que el cariño tenga que desaparecer.
+
+A pesar de que nos encontramos en países diferentes y de que no hemos podido convivir tanto como me habría gustado, quiero que sepas que valoro muchísimo todo lo que has hecho por mí. Me has apoyado económicamente, has estado presente emocionalmente y has buscado la manera de ayudarme incluso a la distancia. Y créeme, mamá, no considero que esas cosas sean pequeñas ni las doy por sentadas. Sé que detrás de cada apoyo existe un esfuerzo, una preocupación y una intención de ayudar a tu hijo, y eso es algo que agradezco sinceramente.
+
+Quizá no hemos tenido la oportunidad de compartir tantos momentos cotidianos como otras madres y sus hijos, pero incluso esos pequeños espacios que hemos compartido jugando Rec Room significan algo para mí. Puede parecer una tontería para algunas personas, pero para mí son momentos en los que podemos convivir, reírnos y tener una pequeña parte de esa cercanía que la distancia a veces nos dificulta. Son recuerdos que valoro porque, más allá del juego, lo importante es poder compartir un rato contigo.
+
+Mamá, sinceramente, para mí eres una de las mejores madres que puede existir. Admiro tu carácter, tu manera de expresarte, tu fortaleza y esa postura firme que tienes cuando algo te preocupa o consideras que debo entender ciertas cosas. JAJAJAJA. Y, obviamente, también admiro esa reacción tuya cuando te enteraste de que tu hijo ya tenía novia. 😂❤️.
+
+JAJAJAJA, mamá, entiendo que te preocupes. De repente tu hijo, que todavía recuerdas como un niño pequeño, ya está creciendo, tiene novia y anda todo enamorado, babeado, besado, marcado y hasta con chupetones. JAJAJAJA. Entiendo que eso pueda hacerte sentir muchas cosas al mismo tiempo, porque para ti sigo siendo tu hijo y seguramente una parte de ti todavía quiere protegerme de todo lo que pueda pasar.
+
+Aunque a veces me dé risa tu manera de reaccionar, también comprendo que detrás de ese carácter hay una madre que se preocupa por su hijo, que quiere que tome buenas decisiones y que desea verlo bien. Y aunque no siempre pensemos exactamente igual, quiero que sepas que valoro tus consejos y que entiendo que muchas de tus preocupaciones nacen del cariño que me tienes.
+
+Pero, más allá de las bromas, quiero agradecerte por no dejar de apoyarme a pesar de la distancia. Gracias por preocuparte por mí, por ayudarme cuando lo he necesitado y por seguir formando parte de mi vida. Sé que no siempre ha sido fácil y que hay cosas que quizá hubiéramos querido vivir de otra manera, pero no quiero quedarme únicamente pensando en el tiempo que no pudimos compartir. También quiero valorar lo que sí hemos tenido y todo lo que todavía podemos construir.
+
+Me gustaría que con el paso del tiempo pudiéramos convivir más, conocernos mejor y crear recuerdos que no dependan únicamente de una pantalla. Quiero tener la oportunidad de abrazarte, pasar tiempo contigo, hablar de nuestras cosas y compartir experiencias que algún día podamos recordar con una sonrisa. No sé cuándo podremos hacerlo de la manera en que me gustaría, pero sí sé que sería algo muy especial para mí.
+
+Y hay algo más que quiero decirte, mamá: admiro tu fortaleza. Sé que la vida puede poner a las personas frente a situaciones complicadas, pero quiero que sepas que reconozco el esfuerzo que haces y que agradezco que hayas seguido apoyándome. No necesito que seas una persona perfecta, porque sé que nadie lo es. Simplemente agradezco que seas mi mamá, que te preocupes por mí y que, a tu manera, sigas buscando lo mejor para tu hijo.
+
+También quiero que sepas que estoy creciendo, que estoy aprendiendo a comprender muchas cosas y que todavía tengo muchísimo por aprender. Seguramente cometeré errores, tendré dudas y habrá momentos en los que no sepa cómo actuar, pero espero que podamos seguir hablando, escuchándonos y aprendiendo el uno del otro. Quiero que nuestra relación siga creciendo y que podamos tener la confianza de decirnos lo que sentimos sin miedo a dejar de querernos por pensar diferente.
+
+Y, mamá, hay algo que para mí es muy importante: mi hermanita Amaya.
+
+Me hace muy feliz saber que ella tiene una familia que puede acompañarla en su crecimiento. De corazón, te lo pido a ti y a Manuel: denle todo el amor que puedan, cuídenla, escúchenla, apóyenla y guíenla en cada etapa de su vida. No me refiero a darle todo lo material ni a evitarle cualquier dificultad, sino a brindarle ese cariño, esa seguridad y esa confianza que le permitan crecer sabiendo que tiene un lugar al que siempre puede volver.
+
+Quiero que Amaya sea una niña feliz, que pueda jugar, reír, aprender y disfrutar de su infancia. Quiero que crezca sintiéndose amada, que tenga la confianza de contarles sus problemas y que sepa que sus sentimientos importan. Que cuando se equivoque, ustedes puedan enseñarle sin hacerla sentir menos; que cuando logre algo, celebren con ella, y que cuando atraviese momentos difíciles, encuentre en ustedes un abrazo, un consejo y la tranquilidad de saber que no está sola.
+
+Por favor, mamá, ayúdenla a convertirse en una persona buena, inteligente, fuerte y segura de sí misma. Enséñenle a respetarse, a respetar a los demás, a reconocer su valor y a no permitir que nadie la haga sentir que vale menos. Denle herramientas para tomar sus propias decisiones, pero acompáñenla mientras aprende a hacerlo.
+
+No les pido que sean padres perfectos, porque sé que eso no existe. Les pido que la amen, que tengan paciencia con ella, que aprendan junto a ella y que nunca dejen de demostrarle lo importante que es para ustedes. Porque, aunque todavía no haya podido compartir tantas cosas con mi hermanita, la quiero muchísimo y deseo de todo corazón que tenga una vida llena de amor, oportunidades y felicidad.
+
+Manuel y tú son los padres de Amaya, y deseo que juntos puedan darle una infancia hermosa y una vida en la que siempre se sienta querida. Quiero que ella crezca rodeada de buenos recuerdos y que, cuando mire hacia atrás, pueda decir que tuvo unos padres que hicieron todo lo posible por verla feliz.
+
+Mamá, gracias por todo lo que has hecho por mí, incluso por aquello que quizá nunca he sabido agradecerte de la manera correcta. Gracias por tu apoyo económico, por tu apoyo emocional, por preocuparte por mi futuro y por seguir siendo parte de mi vida a pesar de los kilómetros que nos separan.
+
+Te quiero muchísimo, mamá, y sinceramente deseo que algún día podamos compartir mucho más tiempo juntos. No quiero que la distancia sea lo único que defina nuestra relación. Quiero que todavía tengamos muchas conversaciones, muchas risas, muchas experiencias y muchos abrazos pendientes.
+
+Y aunque a veces nos riamos de tus reacciones, de mis ocurrencias y de las cosas que pasan en esta etapa de mi vida, quiero que sepas que detrás de todas esas bromas hay un hijo que te quiere, que te agradece lo que haces y que reconoce el lugar tan importante que tienes en su vida.
+
+Gracias por ser mi mamá, Paulina. Gracias por seguir apoyándome y por darme motivos para agradecerte, incluso cuando no encuentro las palabras adecuadas para hacerlo.
+
+Los quiero muchísimo a ti y a Manuel, y deseo que juntos le den a Amaya todo ese amor que merece recibir. Quiero verla crecer feliz, descubrir el mundo, perseguir sus sueños y convertirse en una mujer maravillosa. Y espero poder estar ahí también como su hermano, acompañándola, enseñándole mis tonterías, jugando ajedrez con ella y mostrándole Dragon Ball. JAJAJAJA. 🐉❤️
+
+Mamá, la distancia podrá hacer que no nos veamos todos los días, pero no cambia el hecho de que eres mi madre. Y Amaya podrá ser todavía una personita a la que me falta conocer mucho más, pero desde que llegó al mundo ocupa un lugar inmenso en mi corazón.
+
+Los quiero y deseo de todo corazón que la vida nos permita compartir muchos más momentos juntos. Porque, al final, lo que más quiero no es una familia perfecta, sino una familia que se quiera, se cuide, se comprenda y encuentre la manera de seguir unida a pesar de las dificultades. ❤️‍🩹🫶🏻`
+},
+
+            "bach": {
+    title: "Mau · Las enseñanzas que me llevo ",
+    text: `Mau, si te soy sincero, una de las cosas que más agradezco de ti es que me hayas mostrado ciertos valores de la vida, especialmente los relacionados con la familia, la responsabilidad y el futuro que uno debería construir. Me enseñaste que un hombre debería tener objetivos, terminar sus estudios, conseguir una carrera, trabajar por lo que quiere y, si algún día decide formar una familia, hacerlo con la intención de brindarle amor, estabilidad y un buen futuro.
+
+Y aunque sé que no todo lo que me has enseñado necesariamente lo aplicas en tu propia vida, eso no significa que tus enseñanzas no hayan tenido valor para mí. Al contrario, me ayudaron a reflexionar sobre la clase de persona que quiero llegar a ser y sobre las cosas que considero importantes para mi futuro.
+
+Porque, al final, también he comprendido que una persona puede enseñarte algo valioso sin ser perfecta y que escuchar un buen consejo no significa tener que idealizar a quien te lo dio. Puedo reconocer las cosas buenas que aprendí de ti, agradecerte por haberme abierto los ojos a ciertas ideas y, al mismo tiempo, tomar mis propias decisiones sobre cómo quiero vivir.
+
+No quiero repetir cada cosa que vea en los demás, sino aprender a distinguir qué valores quiero conservar, cuáles quiero poner en práctica y qué errores quiero evitar. Y, de alguna manera, tú has formado parte de ese proceso en mi vida.
+
+Por eso te agradezco tanto, Mau. Porque gracias a lo que me mostraste, empecé a pensar más seriamente en mi futuro y a comprender que no quiero pasar por la vida sin tener objetivos. Quiero terminar mis estudios, prepararme, conseguir una carrera, encontrar mi propio camino y, cuando llegue el momento adecuado, construir una vida de la que pueda sentirme orgulloso.
+
+Y si algún día llego a formar una familia, quiero hacerlo recordando esos valores que me enseñaste, pero también esforzándome por llevarlos a la práctica. Quiero que las personas que estén a mi lado no solamente escuchen de mí lo que significa querer, cuidar y asumir responsabilidades, sino que puedan verlo reflejado en mis acciones.
+
+Así que, aunque todavía me falte muchísimo por aprender y aunque a veces siga siendo el mismo idiota de siempre JAJAJAJA, al menos ahora tengo una idea más clara de lo que quiero para mi vida. Y una parte de ese cambio comenzó gracias a las cosas que aprendí de ti.
+
+No te agradezco porque seas perfecto ni porque hagas todo lo que me enseñaste; te agradezco porque, de una manera u otra, tus enseñanzas me ayudaron a descubrir los valores que yo quiero llevar conmigo y el hombre en el que quiero convertirme. `
+},
+
+            "amistad": {
+    title: "Kimsiita · Mi mejor amiga ",
+    text: `Eyyy, Kimsiita. Primero que nada, me alegra muchísimo que te hayas animado a ingresar la contraseña, este apartado lo creé para que las personas sumamente importantes para mí puedan ingresar su contraseña que les di, amigos, familia JAJAJAJA. Pero, dejando eso de lado, sinceramente quiero aprovechar este momento para decirte algo que quizá no te digo tantas veces como debería: gracias por ser la mejor amiga que pude haber deseado tener en mi vida. De verdad, Kim, eres una persona maravillosa, alguien a quien admiro, respeto y quiero muchísimo más de lo que a veces puedo expresar con palabras.
+
+No sé si eres completamente consciente de lo importante que te has vuelto para mí, pero quiero que sepas que tu presencia ha significado muchísimo en mi vida. No solamente eres alguien con quien puedo jugar, reírme y pasar el rato, sino también una de esas personas con las que puedo ser yo mismo sin sentir que tengo que fingir que todo está bien cuando no es así. Y eso, sinceramente, es algo que valoro demasiado, porque no todos los días encuentras a alguien con quien puedas hablar de cualquier tontería y, cinco minutos después, conversar seriamente sobre las cosas que te duelen.
+
+Gracias por ser esa persona que logra hacerme reír incluso en los momentos en los que estoy mal, cuando no tengo ganas de hablar con nadie o cuando simplemente siento que no estoy teniendo uno de mis mejores días. A veces ni siquiera necesitas hacer algo extraordinario para cambiar mi estado de ánimo; basta con que aparezcas, digas alguna de tus tonterías o empieces a hablar conmigo para que termine riéndome como un idiota. JAJAJAJA.  Y aunque quizá para ti sean momentos normales, para mí significan muchísimo, porque me recuerdan que incluso en los días difíciles todavía existen personas capaces de hacerme sentir bien sin siquiera proponérselo.
+
+Algo que genuinamente me sorprende de ti es esa capacidad que tienes para darte cuenta de cómo me siento. A veces me provoca curiosidad saber cómo demonios consigues tenerme tan estudiado, JAJAJAJA. Literalmente, hay ocasiones en las que ni siquiera he explicado qué me sucede y tú ya tienes una idea de lo que estoy pensando o sintiendo. Me asombra que puedas notar ciertos cambios en mí, reconocer cuándo algo me afecta y darte cuenta de que no estoy del todo bien, incluso cuando intento disimularlo.
+
+Y no te voy a mentir, Kimsi, eso es algo que admiro muchísimo de ti. Porque significa que prestas atención, que conoces mi manera de ser y que has aprendido a reconocer ciertas cosas que quizá otras personas pasarían por alto. Me haces sentir comprendido, y eso es algo que no se puede explicar fácilmente. Es bonito saber que existe alguien que no solamente escucha lo que digo, sino que también intenta entender lo que hay detrás de mis palabras y de mis silencios.
+
+Gracias por escucharme, por tenerme paciencia y por darme la confianza de hablar contigo de prácticamente cualquier tema. Contigo puedo hablar de cosas completamente absurdas, contar mis ocurrencias más estúpidas, reírme hasta que me duela la cara y, de repente, terminar hablando de mis problemas, de mis pensamientos o de cosas que realmente me importan. Y lo bonito es que no siento que tenga que elegir entre una cosa y la otra, porque nuestra amistad tiene espacio para ambas.
+
+Uno de los recuerdos que más cariño les tengo es a esos días en los que nos quedábamos jugando y hablando hasta la madrugada. JAJAJAJA, sinceramente, qué buenos tiempos. Esas noches se encuentran entre los momentos más divertidos que he vivido, porque no se trataba únicamente de estar jugando, sino de compartir tiempo contigo, reírnos de cualquier estupidez y dejar que las horas pasaran sin darnos cuenta.
+
+A veces, los mejores recuerdos no nacen de hacer algo extraordinario, visitar un lugar impresionante o tener el día más emocionante del mundo. A veces nacen de las cosas más sencillas: una conversación que se alarga demasiado, una partida que termina siendo un desastre, una broma que nos hace reír durante media hora o simplemente la compañía de alguien con quien disfrutas estar. Y para mí, muchos de esos recuerdos tienen tu nombre.
+
+Me alegra muchísimo haber compartido contigo todos esos momentos, porque cada uno de ellos forma parte de la historia de nuestra amistad. Y aunque con el tiempo nuestras rutinas puedan cambiar, tengamos más responsabilidades o no siempre podamos pasar tanto tiempo juntos, quiero conservar esos recuerdos como algo muy especial. Porque no fueron simplemente noches jugando; fueron momentos en los que estuve con mi mejor amiga, disfrutando de su compañía y siendo feliz con algo tan sencillo como compartir un rato con ella.
+
+Y si hablamos de los abrazos, Kimsiita… ay, no sé ni cómo explicarlo. 
+
+Cuando me abrazas, siento algo muy bonito: siento que puedo bajar un poquito la guardia, que no necesito tener todas las respuestas ni fingir que siempre puedo con todo. Es como si por un momento pudiera dejar de pensar tanto en las cosas que me preocupan y simplemente estar ahí, tranquilo, sintiéndome comprendido. Para mí, tus abrazos no son solamente una muestra de cariño; también representan esa confianza que he construido contigo y lo mucho que valoro tenerte cerca.
+
+Hay algo especial en poder recibir un abrazo de una persona con la que te sientes en confianza, alguien que conoce tus bromas, tus problemas, tus momentos buenos y tus días difíciles. Y tú eres esa clase de persona para mí. No porque tengas la obligación de solucionar mis problemas ni porque siempre tengas que saber qué decirme, sino porque tu compañía hace que muchas cosas se sientan un poquito menos pesadas.
+
+Gracias por hacerme sentir que puedo ser sincero contigo. Gracias por permitirme compartir contigo tanto mis alegrías como mis preocupaciones. Y gracias por demostrarme que una amistad bonita no necesita que dos personas estén de acuerdo en todo ni que tengan siempre las palabras perfectas, sino que exista cariño, confianza, respeto y ganas de escucharse mutuamente.
+
+También adoro esos momentos en los que salimos a jugar billar o simplemente nos quedamos en el parque hablando de cualquier tontería. JAJAJAJA. Literalmente, podemos empezar hablando de una cosa sin importancia y terminar conversando de cualquier tema imaginable. Y eso es algo que me encanta de nuestra amistad: contigo no necesito que cada salida tenga un plan espectacular para disfrutarla. Me basta con pasar tiempo contigo, escucharte hablar, contarte mis cosas y reírme de las ocurrencias que se nos van ocurriendo.
+
+Y cuando nos regresamos en el metro y recargo mi cabeza en tu hombro, quiero que sepas que para mí ese gesto representa muchísima confianza y cariño. Puede parecer algo pequeño, pero es una de esas formas sencillas en las que puedo expresar lo mucho que te quiero sin tener que decir un discurso entero. Es sentir que puedo estar tranquilo a tu lado, que disfruto de tu compañía y que aprecio esos pequeños momentos que compartimos incluso cuando simplemente estamos regresando a casa.
+
+Porque, Kim, no todas las personas llegan a convertirse en alguien con quien te sientes así de cómodo. No con todas puedes guardar silencio sin sentir que debes llenar el espacio con palabras, ni puedes hablar de tus problemas con la tranquilidad de saber que la otra persona intentará comprenderte. Y por eso valoro tanto lo que tenemos.
+
+También quiero agradecerte especialmente por haberme ayudado con todo lo que he sentido por Paola. Sé que te he hablado bastante del tema y que, en más de una ocasión, probablemente ya estabas cansada de escucharme repetir las mismas cosas, JAJAJAJA. . Pero aun así me escuchaste, me diste consejos y me ayudaste a mirar la situación desde otras perspectivas.
+
+Y sí, para qué te voy a mentir, actualmente Paola todavía me gusta bastante. JAJAJAJA. Parece que mi cerebro a veces no entiende las indirectas que le mando para que supere las cosas. 😭💔 Pero, gracias a tus consejos, he aprendido a controlar mejor lo que siento, a reflexionar antes de actuar y a comprender que tener sentimientos por alguien no significa que deba dejar que esos sentimientos controlen toda mi vida.
+
+Me has ayudado a entender que puedo querer a una persona y, al mismo tiempo, seguir cuidándome a mí mismo; que puedo sentir tristeza o confusión sin tener que quedarme atrapado en ellas, y que no todo lo que deseo necesariamente tiene que suceder para que yo pueda seguir adelante.
+
+Quizá todavía me falten muchas cosas por comprender y probablemente siga contándote alguna que otra actualización sobre el asunto, JAJAJAJA, pero quiero que sepas que agradezco muchísimo que hayas estado conmigo durante ese proceso. No porque hayas podido borrar mágicamente lo que siento, sino porque me has ayudado a manejarlo de una manera más sana y a recordar que mi vida está formada por muchas más cosas que lo que pueda pasar con una persona.
+
+Gracias por aconsejarme sin hacerme sentir tonto por lo que siento, por escucharme cuando necesito desahogarme y por ayudarme a pensar con más claridad cuando mis emociones me hacen darle demasiadas vueltas a las cosas. Tu amistad me ha ayudado a crecer y a conocerme un poquito más, y eso es algo que nunca voy a dejar de valorar.
+
+Pero también quiero que sepas algo, Kimsi: así como tú has estado para mí, yo también quiero estar para ti. Nuestra amistad no se trata solamente de que tú me escuches, me aconsejes o me hagas reír cuando estoy mal. También quiero ser esa persona con la que puedas contar cuando tengas un día difícil, cuando necesites desahogarte, cuando estés triste o cuando simplemente quieras hablar de cualquier cosa para distraerte.
+
+Quiero escucharte, conocer lo que pasa por tu cabeza y acompañarte cuando lo necesites. No siempre voy a saber qué decirte y probablemente en algunas ocasiones termine soltando una tontería cuando debería estar hablando seriamente, JAJAJAJA, pero te prometo que voy a intentar escucharte y apoyarte de la mejor manera que pueda.
+
+Quiero que sientas conmigo la misma confianza que yo siento contigo. Que puedas contarme tus preocupaciones sin pensar que tienes que ocultar cómo te sientes, que podamos hablar de las cosas que nos molestan y que nunca sintamos que debemos fingir estar bien para mantener nuestra amistad. Porque para mí, una amistad verdadera también consiste en acompañarse cuando las cosas no son tan bonitas, respetar los límites del otro y aprender a comprenderse incluso cuando no se tienen todas las respuestas.
+
+Kimsi, de verdad te admiro muchísimo. Admiro tu forma de ser, esa capacidad que tienes para hacerme reír, la manera en que consigues entenderme y todos esos pequeños detalles que te hacen ser la persona maravillosa que eres. Tal vez no siempre te lo diga y quizá a veces dé por hecho que ya sabes cuánto te aprecio, pero no quiero que la costumbre me haga olvidar la importancia de expresar lo que siento por las personas que quiero.
+
+Por eso hoy quiero decírtelo claramente: eres una de las personas más importantes de mi vida y estoy muy agradecido de tenerte como mi mejor amiga.
+
+No sé exactamente qué nos depare el futuro ni cómo cambiarán nuestras vidas con el paso de los años. Seguramente creceremos, tendremos nuevas experiencias, conoceremos personas diferentes y habrá etapas en las que no podamos compartir tanto tiempo como ahora. Pero espero sinceramente que podamos conservar esta amistad, seguir hablando de nuestras cosas, reencontrarnos para jugar billar, sentarnos en el parque a decir estupideces y continuar creando recuerdos que algún día nos hagan sonreír cuando los recordemos.
+
+Quiero que, cuando pasen los años, podamos mirar hacia atrás y recordar todas esas madrugadas jugando, las conversaciones interminables, los abrazos, los regresos en metro y las veces que nos apoyamos cuando alguno de los dos estaba pasando por algo complicado. Quiero que podamos decir que, durante una etapa importante de nuestras vidas, tuvimos la suerte de encontrarnos y construir una amistad que nos hizo sentir acompañados, comprendidos y queridos.
+
+Y, aunque a veces no sea la persona más expresiva del mundo, aunque me cueste encontrar las palabras adecuadas o termine escondiendo mis sentimientos detrás de una broma, quiero que sepas que todo lo que te digo aquí es completamente sincero.
+
+Te quiero muchísimo, Kimsiita. Te adoro y, aunque casi no lo diga de esta manera, te amo muchísimo como la mejor amiga que eres para mí. Gracias por llegar a mi vida, por compartir conmigo tantos momentos bonitos y por convertirte en alguien con quien puedo ser yo mismo sin sentir que debo cambiar para merecer su cariño. `
+},
+
+            "ciclope": {
+    title: "Sam y Rafa, mis hermanos de otra madre 🖤",
+    text: `
+Amigos, mis hermanos de otra madre.
+
+Sam y Rafa, vatos, sinceramente no sé ni por dónde empezar, porque si me pongo a pensar en todo lo que hemos vivido juntos, me doy cuenta de que ustedes son dos de las personas más importantes que la vida me ha permitido conocer. Y se los digo de corazón: considero que ustedes son de los mejores amigos que voy a tener en mi vida, porque lo que he compartido con ustedes durante todo este tiempo es algo que difícilmente voy a olvidar.
+
+Vatos, disfruté muchísimo la secundaria con ustedes. De verdad, hicieron que esa etapa de mi vida fuera muchísimo más divertida de lo que habría sido sin su compañía. Gracias a ustedes, muchos días normales terminaron convirtiéndose en recuerdos que todavía me sacan una sonrisa. No se trataba solamente de ir a la escuela, hacer tareas o pasar las clases, sino de saber que tenía a dos idiotas con los que podía reírme de cualquier tontería. JAJAJAJA. 😭🖤
+
+Nuestra amistad es especial porque podemos pasar de hablar de la estupidez más grande a tener una conversación seria en cuestión de segundos. Podemos insultarnos, molestarnos y decir las cosas más absurdas, pero también sabemos cuándo escuchar y apoyar.
+
+Nunca voy a olvidar las veces que estábamos en su casa jugando Roblox, riéndonos como si no existiera ninguna preocupación en el mundo. Y OBVIAMENTE, ¿CÓMO OLVIDAR LOS RATONES? JAJAJAJAJA. 😭🐀 ¿Quién iba a imaginar que terminaríamos alimentando ratones mientras hablábamos de puras tonterías?
+
+Gracias por cada risa, cada partida, cada conversación y cada tontería que hemos hecho juntos. Gracias por hacer que la secundaria se convirtiera en una etapa que voy a recordar con muchísimo cariño.
+
+También les agradezco por haberme permitido convivir con ustedes en su casa durante varios días. Gracias por recibirme, por dejarme compartir tiempo con ustedes y por hacerme sentir bienvenido. Para mí no fue simplemente pasar unos días en su casa; fue crear nuevos recuerdos y disfrutar de esa convivencia que hace que una amistad se vuelva todavía más cercana.
+
+Y, por supuesto, no podemos olvidar el BOOYAH POR DOQUIER. JAJAJAJAJA. 🔥💀 Espero que, aunque pase mucho tiempo, podamos seguir recordando todas esas tonterías y riéndonos como siempre.
+
+Algo que quiero que sepan es que aprecio muchísimo la amistad que tenemos. Puede que no siempre sea el más expresivo y que a veces me la pase insultándolos o haciendo bromas en lugar de decirles algo sentimental, pero eso no significa que no valore tenerlos en mi vida.
+
+Los considero mis hermanos de otra madre, y espero que nuestra amistad dure muchísimos años. Gracias por formar parte de mi vida, por todos los recuerdos que ya construimos y por los que todavía nos faltan.
+
+Los quiero un chingo, vatos. Nunca cambien, par de idiotas. JAJAJAJA. 😭🖤
+`
+},
+
+          "responsabilidad": {
+    title: "uhm",
+    text: `
+Pensé en ti aquella tarde,
+cuando alguien mencionó tu nombre.
+Quise contarte tantas cosas,
+pero hace tiempo que no sé cómo hablarte.
+
+Tengo dieciséis y estoy creciendo,
+y hay tantas cosas que no conoces de mí.
+A veces me pregunto si te darías cuenta
+de todo lo que ha cambiado desde que te vi.
+
+Quise que estuvieras en mis días,
+que me preguntaras cómo me fue.
+No necesitaba que arreglaras mi vida,
+solo quería que quisieras conocerla también.
+
+¿Te acuerdas de las veces
+que te esperé mirando hacia la calle?
+Yo no sabía cuánto podía doler
+que alguien te prometa volver y no llegue.
+
+Y mientras mi familia intentaba explicarme
+por qué tenía que dejar de esperarte,
+yo me enojaba, decía que quería estar contigo,
+sin comprender por qué no venías a buscarme.
+
+No entendía por qué era tan difícil
+que quisieras pasar un rato junto a mí.
+Yo defendía la idea de tenerte cerca,
+aunque tantas veces te olvidaras de mí.
+
+Ahora tengo historias que no conoces,
+días buenos que no viste pasar.
+Y aunque a veces digo que ya no me importa,
+hay una parte de mí que te quisiera contar.
+
+No sé si alguna vez pensaste en llamarme,
+si te preguntaste cómo llegué hasta aquí.
+Yo todavía estoy aprendiendo a ser alguien,
+y hubo tantas veces que quise tenerte junto a mí.
+
+Papá, no quería que fueras perfecto,
+ni que supieras siempre qué decir.
+Quería que alguna vez me miraras
+como si también te alegrara verme a mí.
+
+No sé qué cosas llevabas por dentro,
+ni qué razones te alejaron de aquí.
+Pero yo era un niño queriendo ser querido,
+y no sabía que no podía obligarte
+a querer estar conmigo.
+
+Y si algún día me preguntas por qué he cambiado,
+por qué ya no te espero como cuando era pequeño,
+quizá no sepa explicarte todo lo que he guardado,
+ni cómo se siente crecer extrañando a alguien
+que sigue siendo tu padre.
+
+Porque hubo tardes en que lloré por ti,
+y noches en que deseé que aparecieras.
+No quería aprender a vivir sin esperarte;
+quería que, por una vez,
+no tuviera que esperarte para sentir
+que eras parte de mi vida.
+
+`
+},
+
+        };
+
+
+        /* =================================================
+           COMPROBAR CONTRASEÑA
+        ================================================= */
+
+        function checkPassword() {
+
+            const value =
+                passwordInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+            const result =
+                passwords[value];
+
+
+            if (result) {
+
+                passwordMessage.textContent =
+                    "✓ Contraseña correcta.";
+
+
+                passwordMessage.className =
+                    "rating-message good";
+
+
+                passwordTitle.textContent =
+                    result.title;
+
+
+                passwordText.textContent =
+                    result.text;
+
+
+                passwordContent.style.display =
+                    "block";
+
+                // El bot muestra el mensaje personalizado.
+                if (typeof showBotPhrase === "function") {
+                    showBotPhrase(result.text);
+                }
+
+                // La computadora lee el mensaje en voz alta si el navegador lo permite.
+                if (typeof speakBotPhrase === "function") {
+                    speakBotPhrase(result.title + ". " + result.text);
+                } else if ("speechSynthesis" in window) {
+                    window.speechSynthesis.cancel();
+                    const speech = new SpeechSynthesisUtterance(
+                        result.title + ". " + result.text
+                    );
+                    speech.lang = "es-MX";
+                    window.speechSynthesis.speak(speech);
+                }
+
+            } else {
+
+                passwordMessage.textContent =
+                    "✕ Contraseña incorrecta.";
+
+
+                passwordMessage.className =
+                    "rating-message normal";
+
+
+                passwordContent.style.display =
+                    "none";
+
+                if ("speechSynthesis" in window) {
+                    window.speechSynthesis.cancel();
+                }
+
+            }
+
+            passwordInput.value = "";
+
+        }
+
+
+        passwordButton.addEventListener(
+            "click",
+            checkPassword
+        );
+
+
+        passwordInput.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Enter"
+                ) {
+
+                    checkPassword();
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

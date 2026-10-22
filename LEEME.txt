@@ -1,0 +1,11 @@
+PENSAMIENTO AJEDRECÍSTICO - 
+
+Contraseñas de ejemplo:
+- caballo-01 -> Usuario 1 · El estratega
+- torre-02 -> Usuario 2 · El paciente
+- alfil-03 -> Usuario 3 · El observador
+- reina-04 -> Usuario 4 · El líder
+- rey-05 -> Usuario 5 · El defensor
+- peon-06 -> Usuario 6 · El perseverante
+
+.
