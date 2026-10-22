@@ -1,0 +1,2 @@
+# Pensamiento-ajedrecistico..
+Kdk
